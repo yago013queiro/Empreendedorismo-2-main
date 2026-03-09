@@ -1,0 +1,521 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MENTECH.AI â€” Estudos & ProgramaÃ§Ã£o</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   <header class="navbar">
+    <div class="brand" id="brand-logo" role="button" title="Ir para a pÃ¡gina inicial">
+      <div class="logo-ico"></div>
+      <div class="brand-text">MENTECH.IA<span>AI</span></div>
+    </div>
+
+    <div class="nav-actions">
+      <button id="toggle-theme" title="Trocar tema">ðŸŒ—</button>
+      <button id="inc-font" title="Aumentar fonte">A+</button>
+      <button id="dec-font" title="Diminuir fonte">A-</button>
+      <nav class="mini-nav">
+        <button class="nav-link" onclick="goToPage('page-home')">Home</button>
+        <button class="nav-link" onclick="goToPage('page-areas')">Ver Ã¡reas</button>
+        <button class="nav-link" onclick="goToPage('page-escolha')">Escolher</button>
+        <button class="nav-link" id="nav-chat" onclick="prepareChat()">Chat</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="app">
+
+
+    <section class="page active" id="page-home" data-page="home">
+      <div class="home-center">
+        <div class="center-panel">
+          <h1>Bem-vindo(a) Ã  <span>MENTECH.AI</span></h1>
+          <p class="lead">ExplicaÃ§Ãµes e ensinamentos com IA â€” resultados claros e prÃ¡ticos.</p>
+          
+          <div class="hero-cta">
+            <button class="btn large" onclick="prepareChat()">ComeÃ§ar Chat</button>
+            <button class="btn outline" onclick="goToPage('page-areas')">Ver Ã¡reas</button>
+          </div>
+
+          <p class="intro">Aqui estÃ£o algumas Ã¡reas que vocÃª pode explorar: programaÃ§Ã£o, matÃ©rias gerais e dicas de estudo.</p>
+        </div>
+      </div>
+
+      
+      <section class="home-section">
+        <h2>O que nÃ³s oferecemos?</h2>
+        <div class="features">
+          <div class="feature big">
+            <h3>ExplicaÃ§Ãµes passo a passo</h3>
+            <p>Ensinaremos o que vocÃª mais tem dificuldade, e tiraremos todas suas dÃºvidas, para aprender facilmente.</p>
+          </div>
+          <div class="feature big">
+            <h3>Diversidade de ConteÃºdos</h3>
+            <p>Aprenda a linguagem ou matÃ©ria que vocÃª mais tem dificuldade facilmente.</p>
+          </div>
+          <div class="feature big">
+            <h3>Plano de estudos</h3>
+            <p>Modelos para planejar seus estudos com eficiÃªncia.</p>
+          </div>
+        </div>
+      </section>
+
+     
+      <section class="home-section">
+        <h2>Quem jÃ¡ usou</h2>
+        <div class="testimonials">
+          <div class="testi">
+            <p>"Eu aprendi diversas coisas com a MENTECH, porÃ©m a que mais me ensinou foi os LaÃ§os de repetiÃ§Ã£o em C!"</p>
+            <small>â€” Saimon Lincoln</small>
+          </div>
+          <div class="testi">
+            <p>"Aprendi o bÃ¡sico de Java e Python, sabendo apenas programar em C."</p>
+            <small>â€” JoÃ£o Pedro</small>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <
+    <section class="page" id="page-escolha" data-page="escolha">
+      <h2>Escolha sua Ã¡rea</h2>
+      <p class="section-sub">Cada Ã¡rea leva a um fluxo separado da IA.</p>
+
+      <div class="grid-choices large">
+        <article class="choice-card" onclick="setArea('programacao'); goToPage('page-programacao')">
+          <img src="https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_1280.jpg" alt="ProgramaÃ§Ã£o">
+          <h3>ProgramaÃ§Ã£o</h3>
+          <p>Aprenda a programar com sua linguagem especÃ­fica.</p>
+        </article>
+
+        <article class="choice-card" onclick="setArea('materias'); goToPage('page-nivel')">
+          <img src="https://github.com/yago013queiro/Empreendedorismo-2/blob/main/11123781-quatorze-icones-de-materias-escolares-vetor.jpg?raw=true" alt="Outras matÃ©rias">
+          <h3>Outras matÃ©rias (Geral)</h3>
+          <p>ConteÃºdo geral, MatemÃ¡tica, PortuguÃªs etc.</p>
+        </article>
+
+        <article class="choice-card" onclick="setArea('estudo'); goToPage('page-dicas')">
+          <img src="https://cdn.pixabay.com/photo/2015/09/05/21/51/study-925589_1280.jpg" alt="Dicas de estudo">
+          <h3>Dicas de estudo</h3>
+          <p>Aprenda da melhor forma, como estudar corretamente.</p>
+        </article>
+      </div>
+
+      <div class="pager">
+        <button class="btn outline" onclick="goToPage('page-home')">â† Voltar</button>
+      </div>
+    </section>
+
+  
+    <section class="page" id="page-areas" data-page="areas">
+      <h2>Todas as Ã¡reas</h2>
+      <p class="section-sub">Aqui apresentamos as Ã¡reas disponÃ­veis â€” clique numa linguagem para saber mais.</p>
+
+      <div class="langs-grid">
+        <!-- C -->
+        <div class="lang-card" data-lang="C" onmouseenter="hoverLang(this)" onmouseleave="unhoverLang(this)" onclick="openLangOverlay('C')">
+          <img src="https://idocode.com.br/wp-content/uploads/2020/04/aprender-programar-linguagem-c.jpg" alt="C">
+          <div class="lang-info"><h3>C</h3><p>A linguagem C tem: Simplicidade, Sintaxe simples e de aprendizado rÃ¡pido de entender.</p></div>
+        </div>
+
+        <!-- Java -->
+        <div class="lang-card" data-lang="Java" onmouseenter="hoverLang(this)" onmouseleave="unhoverLang(this)" onclick="openLangOverlay('Java')">
+          <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=2f8d886e41b9bc2a6d8a7a4f1dfb4a50" alt="Java">
+          <div class="lang-info"><h3>Java</h3><p>A linguagem JAVA tem: Plataforma independente, POO(ProgramaÃ§Ã£o Orientada a Objeto), Robusto e linguagem mais complicada de entender.</p></div>
+        </div>
+
+        <!-- Python -->
+        <div class="lang-card" data-lang="Python" onmouseenter="hoverLang(this)" onmouseleave="unhoverLang(this)" onclick="openLangOverlay('Python')">
+          <img src="https://cdn.pixabay.com/photo/2015/01/08/18/29/entrepreneur-593358_1280.jpg" alt="Python">
+          <div class="lang-info"><h3>Python</h3><p>A linguagem PYTHON tem: VersÃ¡tilidade, e a facilidade de entender, e tem a Sintaxe mais simples.</p></div>
+        </div>
+      </div>
+
+      <div class="pager">
+        <button class="btn outline" onclick="goToPage('page-home')">â† Voltar</button>
+      </div>
+    </section>
+
+    <section class="page" id="page-programacao" data-page="programacao">
+      <h2>ProgramaÃ§Ã£o â€” Escolha a linguagem</h2>
+      <p class="section-sub">Clique para abrir detalhes.</p>
+
+      <div class="langs-grid">
+        <div class="lang-card" data-lang="C" onmouseenter="hoverLang(this)" onmouseleave="unhoverLang(this)" onclick="openLangOverlay('C')">
+          <img src="https://cdn.pixabay.com/photo/2016/06/06/17/05/c-programming-1436536_1280.jpg" alt="C language">
+          <div class="lang-info"><h3>C</h3><p>Simples e rÃ¡pido aprendizado.</p></div>
+        </div>
+
+        <div class="lang-card" data-lang="Java" onmouseenter="hoverLang(this)" onmouseleave="unhoverLang(this)" onclick="openLangOverlay('Java')">
+          <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=2f8d886e41b9bc2a6d8a7a4f1dfb4a50" alt="Java">
+          <div class="lang-info"><h3>Java</h3><p>Dificultosa, porÃ©m Orientada a Objetos.</p></div>
+        </div>
+
+        <div class="lang-card" data-lang="Python" onmouseenter="hoverLang(this)" onmouseleave="unhoverLang(this)" onclick="openLangOverlay('Python')">
+          <img src="https://cdn.pixabay.com/photo/2015/01/08/18/29/entrepreneur-593358_1280.jpg" alt="Python">
+          <div class="lang-info"><h3>Python</h3><p>Simples e versÃ¡til</p></div>
+        </div>
+      </div>
+
+      <div class="pager">
+        <button class="btn outline" onclick="goToPage('page-escolha')">â† Voltar</button>
+      </div>
+    </section>
+
+    <section class="page" id="page-nivel" data-page="nivel">
+      <h2>Qual seu nÃ­vel?</h2>
+      <div class="nivel-grid">
+        <div class="nivel-card" onclick="setNivel('medio')">ðŸŽ“ Ensino MÃ©dio</div>
+        <div class="nivel-card" onclick="setNivel('faculdade')">ðŸ›ï¸ Faculdade</div>
+      </div>
+
+      <div class="pager">
+        <button class="btn outline" onclick="goToPage('page-escolha')">â† Voltar</button>
+        <button class="btn" onclick="goToPage('page-chat')">Ir para chat â†’</button>
+      </div>
+    </section>
+
+   
+    <section class="page" id="page-dicas" data-page="dicas">
+      <h2>Dicas de estudo</h2>
+      <div class="tips-grid">
+        <div class="tip"><h4>TÃ©cnica Pomodoro</h4><p>Rotina de 25/5 â€” Com repetiÃ§Ã£o de 4x.</p></div>
+        <div class="tip"><h4>Resumos</h4><p>Escreva com suas palavras, que darÃ¡ um resumo explicativo.</p></div>
+        <div class="tip"><h4>ExercÃ­cios</h4><p>Resolva e entenda o erro.</p></div>
+      </div>
+
+      <div class="pager">
+        <button class="btn outline" onclick="goToPage('page-escolha')">â† Voltar</button>
+        <button class="btn" onclick="goToPage('page-nivel')">Ir para NÃ­vel â†’</button>
+      </div>
+    </section>
+
+    
+    <section class="page" id="page-chat" data-page="chat">
+      <div class="chat-container">
+        <div class="chat-header">
+          <div class="chat-title">
+            <div class="avatar">ðŸ¤–</div>
+            <div>
+              <h3>MENTECH.AI</h3>
+              <small class="chat-sub">Assistente de Estudos</small>
+            </div>
+          </div>
+
+          <div class="chat-info">
+            <div class="chip">Ãrea: <span id="chip-area">â€”</span></div>
+            <div class="chip">Linguagem: <span id="chip-lang">â€”</span></div>
+            <div class="chip">NÃ­vel: <span id="chip-level">â€”</span></div>
+          </div>
+        </div>
+
+        <div class="chat-messages" id="chat-messages">
+          <div class="message ai">
+            <div class="avatar-mini">ðŸ¤–</div>
+            <div class="bubble">OlÃ¡! Eu sou a MENTECH.AI â€” Qual sua dÃºvida?</div>
+          </div>
+        </div>
+
+        <div class="chat-input-area">
+          <input type="text" id="chat-input" placeholder="Digite sua pergunta..." />
+          <button onclick="sendMessage()">Enviar</button>
+        </div>
+
+        <div class="chat-actions">
+          <button class="btn outline" onclick="goToPage('page-escolha')">Escolher novamente</button>
+          <button class="btn danger" onclick="clearChat()">Limpar chat</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  
+  <div id="lang-overlay" class="lang-overlay" aria-hidden="true">
+    <div class="lang-panel">
+      <button class="close" onclick="closeLangOverlay()">âœ•</button>
+      <div class="lang-header">
+        <img id="lang-img" src="/placeholder.svg" alt="">
+        <div>
+          <h2 id="lang-title"></h2>
+          <p id="lang-desc"></p>
+        </div>
+      </div>
+
+      <div class="lang-body">
+        <div class="lang-examples">
+          <h4>Exemplo de cÃ³digo</h4>
+          <pre id="lang-code" class="code-box"></pre>
+          <div class="lang-actions">
+            <button class="btn" onclick="copyCode()">Copiar cÃ³digo</button>
+            <button class="btn outline" onclick="proceedFromOverlay()">Prosseguir (escolher nÃ­vel)</button>
+          </div>
+        </div>
+
+        <div class="lang-more">
+          <h4>O que vocÃª vai aprender</h4>
+          <ul id="lang-points"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <small>Â© 2025 MENTECH.AI â€” Equipe 1Â° InformÃ¡tica</small>
+  </footer>
+
+  <script src="./ai.js"></script>
+  <script>
+ 
+  const state = { area: null, linguagem: null, nivel: null };
+
+  const LANG_DATA = {
+    "C": {
+      title: "C â€” Linguagem C",
+      img: "https://cdn.pixabay.com/photo/2016/06/06/17/05/c-programming-1436536_1280.jpg",
+      desc: "C Ã© clÃ¡ssica, Ã³tima para entender lÃ³gica e memÃ³ria. Excelente para sistemas e fundamentos.",
+      points: ["Sintaxe bÃ¡sica", "Ponteiros e memÃ³ria", "FunÃ§Ãµes e estruturas", "CompilaÃ§Ã£o com gcc"],
+      code: `#include <stdio.h>
+
+int main() {
+  printf("OlÃ¡, MENTECH!\\n");
+  return 0;
+}`
+    },
+    "Java": {
+      title: "Java â€” Linguagem Java",
+      img: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=2f8d886e41b9bc2a6d8a7a4f1dfb4a50",
+      desc: "Java Ã© orientada a objetos, usada em aplicaÃ§Ãµes e servidores â€” Ã³tima para OOP.",
+      points: ["Classes e objetos","HeranÃ§a e polimorfismo","ColeÃ§Ãµes","CompilaÃ§Ã£o com javac"],
+      code: `public class Main {
+  public static void main(String[] args) {
+    System.out.println("OlÃ¡, MENTECH!");
+  }
+}`
+    },
+    "Python": {
+      title: "Python â€” Linguagem Python",
+      img: "https://cdn.pixabay.com/photo/2015/01/08/18/29/entrepreneur-593358_1280.jpg",
+      desc: "Python Ã© simples e poderosa â€” ideal para iniciantes e scripts rÃ¡pidos.",
+      points: ["Sintaxe simples","Bibliotecas ricas","InterpretaÃ§Ã£o imediata","Ideal para protÃ³tipos"],
+      code: `print("OlÃ¡, MENTECH!")`
+    }
+  };
+
+  const pages = () => document.querySelectorAll('.page');
+  const overlay = document.getElementById('lang-overlay');
+  const langTitle = document.getElementById('lang-title');
+  const langDesc = document.getElementById('lang-desc');
+  const langImg = document.getElementById('lang-img');
+  const langCode = document.getElementById('lang-code');
+  const langPoints = document.getElementById('lang-points');
+
+
+  function goToPage(id){
+    pages().forEach(p => {
+      p.classList.remove('active','page-in','page-out');
+      if (p.id === id) p.classList.add('active','page-in'); else p.classList.add('page-out');
+    });
+    updateChips();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function setArea(a){ state.area = a; updateChips(); }
+  function setLinguagem(l){ state.linguagem = l; updateChips(); }
+  function setNivel(n){ state.nivel = n; updateChips(); goToPage('page-chat'); }
+
+  function updateChips(){
+    const area = document.getElementById('chip-area');
+    const lang = document.getElementById('chip-lang');
+    const level = document.getElementById('chip-level');
+    if (area) area.textContent = state.area || 'â€”';
+    if (lang) lang.textContent = state.linguagem || 'â€”';
+    if (level) level.textContent = state.nivel || 'â€”';
+  }
+
+
+  function hoverLang(el){ el.style.transform = 'scale(1.03)'; el.style.zIndex = 5; }
+  function unhoverLang(el){ el.style.transform = ''; el.style.zIndex = ''; }
+
+  function openLangOverlay(key){
+    const data = LANG_DATA[key];
+    if (!data) return;
+    langTitle.textContent = data.title;
+    langDesc.textContent = data.desc;
+    langImg.src = data.img;
+    langCode.textContent = '';
+    langPoints.innerHTML = '';
+    data.points.forEach(p => { const li = document.createElement('li'); li.textContent = p; langPoints.appendChild(li); });
+
+    overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false');
+
+  
+    let i = 0; const codeStr = data.code;
+    (function step(){
+      if (i <= codeStr.length){ langCode.textContent = codeStr.slice(0,i); i++; setTimeout(step, 10); }
+    })();
+
+    
+    state.linguagem = key; updateChips();
+  }
+
+  function closeLangOverlay(){
+    overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true');
+    goToPage('page-home');
+  }
+
+  function copyCode(){ 
+    const txt = langCode.textContent; 
+    navigator.clipboard?.writeText(txt).then(()=> alert('CÃ³digo copiado!')).catch(()=> alert('NÃ£o foi possÃ­vel copiar.')) 
+  }
+  
+  function proceedFromOverlay(){ 
+    overlay.classList.remove('open'); 
+    overlay.setAttribute('aria-hidden','true'); 
+    goToPage('page-nivel'); 
+  }
+
+  
+  async function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const messages = document.getElementById('chat-messages');
+    
+    const prompt = input.value.trim();
+    if (!prompt) return;
+
+    
+    const userMsg = document.createElement('div');
+    userMsg.className = 'message user';
+    userMsg.innerHTML = `<div class="bubble">${prompt}</div>`;
+    messages.appendChild(userMsg);
+    input.value = '';
+
+    
+    messages.scrollTop = messages.scrollHeight;
+
+    
+    const typingMsg = document.createElement('div');
+    typingMsg.className = 'message ai typing-indicator';
+    typingMsg.innerHTML = '<div class="avatar-mini">ðŸ¤–</div><div class="bubble">Digitando...</div>';
+    messages.appendChild(typingMsg);
+    messages.scrollTop = messages.scrollHeight;
+
+    try {
+      
+      let response;
+      if (window.askGroq) {
+        response = await window.askGroq(prompt);
+      } else {
+        
+        response = generateFallbackResponse(prompt);
+      }
+
+     
+      typingMsg.remove();
+
+     
+      const aiMsg = document.createElement('div');
+      aiMsg.className = 'message ai';
+      aiMsg.innerHTML = `<div class="avatar-mini">ðŸ¤–</div><div class="bubble">${response}</div>`;
+      messages.appendChild(aiMsg);
+
+    } catch (error) {
+      typingMsg.remove();
+      const errorMsg = document.createElement('div');
+      errorMsg.className = 'message ai error';
+      errorMsg.innerHTML = `<div class="avatar-mini">âš ï¸</div><div class="bubble">Desculpe, ocorreu um erro. Tente novamente.</div>`;
+      messages.appendChild(errorMsg);
+    }
+
+   
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function generateFallbackResponse(prompt) {
+    if (!state.area) return "Por favor, selecione sua Ã¡rea antes de usar o chat.";
+    
+    const lang = (state.linguagem || '').toLowerCase();
+    const area = state.area;
+    
+    if (area === 'programacao' && lang) {
+      return `Ã“tima pergunta sobre ${state.linguagem}! Vou explicar: "${prompt}"\n\nEm ${state.linguagem}, vocÃª pode resolver isso da seguinte forma...\n\n(Para respostas mais detalhadas, configure a integraÃ§Ã£o com Groq no arquivo ai.js)`;
+    }
+    
+    if (area === 'materias') {
+      return `ðŸ“š Sobre "${prompt}": Vou te ajudar com essa matÃ©ria! Aqui estÃ¡ uma explicaÃ§Ã£o resumida...\n\n(Configure ai.js para respostas mais completas)`;
+    }
+    
+    if (area === 'estudo') {
+      return `ðŸ•’ Para "${prompt}": Recomendo usar a TÃ©cnica Pomodoro, fazer resumos com suas prÃ³prias palavras e revisar regularmente.\n\n(Configure ai.js para dicas personalizadas)`;
+    }
+    
+    return `Entendi sua pergunta sobre "${prompt}". Configure a integraÃ§Ã£o com Groq no arquivo ai.js para respostas mais detalhadas!`;
+  }
+
+  function clearChat() {
+    const messages = document.getElementById('chat-messages');
+    messages.innerHTML = '<div class="message ai"><div class="avatar-mini">ðŸ¤–</div><div class="bubble">Chat limpo. Pergunte algo!</div></div>';
+  }
+
+ 
+  function prepareChat(){
+    if (!state.area){ 
+      alert('Escolha antes a Ã¡rea (ProgramaÃ§Ã£o / Outras matÃ©rias / Dicas).'); 
+      goToPage('page-escolha'); 
+      return; 
+    }
+    if (state.area === 'programacao' && !state.linguagem){ 
+      alert('Escolha a linguagem (C, Java ou Python) antes de usar o chat.'); 
+      goToPage('page-programacao'); 
+      return; 
+    }
+    if (!state.nivel){ 
+      goToPage('page-nivel'); 
+      return; 
+    }
+    goToPage('page-chat');
+  }
+
+  document.addEventListener('DOMContentLoaded', ()=> {
+
+    document.getElementById('brand-logo')?.addEventListener('click', ()=> goToPage('page-home'));
+
+    
+    const root = document.documentElement;
+    document.getElementById('inc-font')?.addEventListener('click', ()=> { 
+      let s = parseFloat(getComputedStyle(root).fontSize); 
+      root.style.fontSize = (s+1)+'px'; 
+    });
+    document.getElementById('dec-font')?.addEventListener('click', ()=> { 
+      let s = parseFloat(getComputedStyle(root).fontSize); 
+      if (s>12) root.style.fontSize = (s-1)+'px'; 
+    });
+
+   
+    const toggle = document.getElementById('toggle-theme');
+    toggle?.addEventListener('click', ()=> {
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('mt_theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+    });
+    if (localStorage.getItem('mt_theme') === 'light') document.body.classList.add('light-mode');
+
+   
+    document.getElementById('chat-input')?.addEventListener('keypress', e => { 
+      if (e.key === 'Enter') sendMessage(); 
+    });
+
+    
+    updateChips();
+  });
+  </script>
+</body>
+</html>
+
