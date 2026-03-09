@@ -10,7 +10,6 @@ const state = {
   nivel: null
 };
 
-// --- Dados das Linguagens ---
 const LANG_DATA = {
   "C": {
     title: "C — Linguagem C",
