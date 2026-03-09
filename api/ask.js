@@ -5,11 +5,9 @@ export default async function handler(req, res) {
 
   try {
     const GROQ_API_KEY = process.env.GROQ_API_KEY;
-    const systemPrompt = `
-Você é uma assistente educacional focada no aprendizado.
+    const systemPrompt = `Você é uma assistente educacional focada no aprendizado.
 Explique tudo de forma clara, objetiva e voltada para um estudante.
-Use exemplos simples quando necessário.
-`;
+Use exemplos simples quando necessário.`;
 
     if (!GROQ_API_KEY) {
       console.error("GROQ_API_KEY NÃO CONFIGURADA");
@@ -32,7 +30,10 @@ Use exemplos simples quando necessário.
       },
       body: JSON.stringify({
         model: "llama-3.1-8b-instant",
-        messages: [{ role: "user", content: prompt }],
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: prompt }
+        ],
         max_tokens: 400
       })
     });
